@@ -1,0 +1,29 @@
+
+
+  form{
+    margin-top: 5%;
+    margin-right: 3%;
+    float: right; 
+    border:2px solid rgb(58, 91, 88); 
+    padding: 2%;
+    width: 20%;
+    text-align: right;
+    
+  }
+  table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+th, td{
+    padding: 10px 20px;
+    border: 1px solid #000;
+}
+
+/* table, th, td, th {
+  border: solid 1px #DDD;
+  border-collapse: collapse;
+  padding: 2px 3px;
+  text-align: center;
+  font-weight: normal;
+} */
