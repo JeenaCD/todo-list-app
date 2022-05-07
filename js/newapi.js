@@ -1,7 +1,4 @@
 function ajax() {
-    var x=new Promise(function(resolve, reject) {
-        try {
-
     // creating an XHR object
     var xhttp = new XMLHttpRequest();
     // event listsener
@@ -49,17 +46,27 @@ function ajax() {
                 // NOW HERE I AM CREATING AND ADDING A CHECKBOX TO THE TABLE CELL.
                 var chk = document.createElement('input');
                 chk.setAttribute('type', 'checkbox');
-                tabCell.appendChild(chk);
-                chk.id = "id" + i +j;
+                // tabCell.appendChild(chk);
+                // chk.id = "id" + i +j;
                 
 
                 if(response[i][col[j]] == true){
                     chk.checked = true;
                     chk.disabled = true;
                 }
-                else
-                    chk.checked = false;
-                    
+
+                chk.addEventListener('change',(event)=>{
+                    if(event.currentTarget.checked){
+                        count++;
+                        console.log("checked " + count);
+                        checkcounter();
+                    }
+                    else{
+                        count--;
+                        console.log("checked " + count);
+                    }
+                })
+                tabCell.appendChild(chk);     
             }
             // console.log(chk.id);
             tr.style.border = "1px solid black";
@@ -72,51 +79,20 @@ function ajax() {
     
     }
     
-    // }
-    // for (var i = 0; i < response.length; i++) {
-    //     for (var j = 3; j < response.length; j++){
-        //     const cb = document.querySelector('#chk');
-        //    console.log(cb); // false
-    //   }
-    //  }
     }
 
     xhttp.open("Get","https://jsonplaceholder.typicode.com/todos",true);
     xhttp.send();
 }
-catch (e) {
-    reject();
-} 
-finally {
-    console.log('Done');
-    resolve();
-}
-})
-.then(function(s) {
-    console.log('Promise called');
-    main();
-})
-}
 
-function main() {
-    setTimeout(function() {
-        // console.log(chk.id);
-        var checked = $('input:checkbox:checked');
-        var select = $('input:checkbox');
-        console.log("Checkboxes: " + select.length);
-        console.log("Checked: " + checked.length);
-        count = 0;
-        select.change(function() {
-            var newly_checked = $('input:checkbox:checked');
-            console.log("Now Checked becomes: " + newly_checked.length);
-            count = newly_checked.length - checked.length;
-            console.log("newly checked: " + count);
-
-            if (count >= 5) {
-                setTimeout(function() {
-                    alert(" Congrats. 5 Tasks have been Successfully Completed");
-                }, 400);
-            }
-        })
-    }, 5000);
+var count=0;
+function checkcounter(){
+    let promise= new Promise(function(resolve,reject){
+        if(count==5){
+            resolve("Congrats. 5 Tasks have been Successfully Completed");
+        }
+    })
+    promise.then(function(s){
+        alert(s);
+    })
 }

@@ -1,6 +1,6 @@
 
 
-  form{
+  #loginbox{
     margin-top: 5%;
     margin-right: 3%;
     float: right; 
@@ -8,22 +8,16 @@
     padding: 2%;
     width: 20%;
     text-align: right;
-    
-  }
+    background-color: rgb(235, 241, 224);
+    }
+
   table{
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
+    background-color: rgb(236, 234, 220);
 }
 th, td{
     padding: 10px 20px;
     border: 1px solid #000;
 }
-
-/* table, th, td, th {
-  border: solid 1px #DDD;
-  border-collapse: collapse;
-  padding: 2px 3px;
-  text-align: center;
-  font-weight: normal;
-} */
